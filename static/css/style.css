@@ -32,6 +32,7 @@ h2{
     text-align: center;
 }
 h3{
+    font-size: 16px;
     margin: 2% 0 !important;
 }
 #btn-calcular{
@@ -41,13 +42,18 @@ h3{
 .box-1{
     border-radius: 10px;
     padding: 5% 3%;
-}
-
-.box-1{
-    border-radius: 18px;
     /* background: #e0e0e0; */
     box-shadow:  -5px 5px 20px #d1d1d1,
                  5px -5px 20px #e9e9e9;
+}
+.box-2{
+    margin-bottom: 5%;
+    padding: 5% 3%;
+    border-radius: 5px;
+    -webkit-box-shadow: -5px 11px 6px -6px rgba(199,199,199,1);
+    -moz-box-shadow: -5px 11px 6px -6px rgba(199,199,199,1);
+    box-shadow: -5px 11px 6px -6px rgba(199,199,199,1);
+    display: none;
 }
 footer{
     color: gray;
