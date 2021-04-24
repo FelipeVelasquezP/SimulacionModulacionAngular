@@ -8,9 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Frameworks css -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <!-- Hojas de Estilo CSS -->
   <link rel="stylesheet" href="static/css/style.css" TYPE="text/css">
   <link rel="stylesheet" href="static/css/normalize.css">
@@ -18,7 +17,11 @@
 </head>
 
 <body>
-  <h1 class="title">Modulación Angular</h1>
+
+    <div id="myDiv">
+
+    </div>
+  <h1 class="title">Modulación Angular en FM y PM</h1>
   <section class="inputs">
     <div class="row">
       <div class="col-6 line">
@@ -34,7 +37,7 @@
             </div> -->
             <div class="col">
               <div class="form-floating">
-                <input type="number" class="form-control" id="floatingInputGrid" placeholder="Amplitud max - Vc">
+                <input type="number" class="form-control" id="Vc" placeholder="Amplitud max - Vc">
                 <label for="floatingInputGrid">Amplitud maxima portadora - Vc</label>
               </div>
             </div>
@@ -49,7 +52,7 @@
             </div> -->
             <div class="col">
               <div class="form-floating">
-                <input type="number" class="form-control" id="floatingInputGrid" placeholder="Frecuencia - fc">
+                <input type="number" class="form-control" id="fc" placeholder="Frecuencia - fc">
                 <label for="floatingInputGrid">Frecuencia portadora - fc</label>
               </div>
             </div>
@@ -69,7 +72,7 @@
               </div> -->
               <div class="col">
                 <div class="form-floating">
-                  <input type="number" class="form-control" id="floatingInputGrid" placeholder="Amplitud maxima moduladora - Vm">
+                  <input type="number" class="form-control" id="Vm" placeholder="Amplitud maxima moduladora - Vm">
                   <label for="floatingInputGrid">Amplitud maxima moduladora - Vm</label>
                 </div>
               </div>
@@ -84,7 +87,7 @@
               </div> -->
               <div class="col">
                 <div class="form-floating">
-                  <input type="number" class="form-control" id="floatingInputGrid" placeholder="Frecuencia moduladora - fm">
+                  <input type="number" class="form-control" id="fm" placeholder="Frecuencia moduladora - fm">
                   <label for="floatingInputGrid">Frecuencia moduladora - fm</label>
                 </div>
               </div>
@@ -93,9 +96,17 @@
       </div>
     </div>
     <div class="row">
-      <button type="button" class="btn btn-primary" id="btn-calcular" onclick="calcular()">Calcular</button>
+      <button type="button" class="btn btn-primary" id="btn-calcular" >Calcular</button>
     </div>
   </section>
+
+  <div id="ModuladoraFM" >
+</div>
+<div id="ModuladorafM" >
+</div>
+
+
+
 <footer>
   Luis Felipe Velasquez - Andrés Camilo López
 </footer>

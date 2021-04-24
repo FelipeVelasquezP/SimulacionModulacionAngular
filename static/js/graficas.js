@@ -3,8 +3,12 @@ function traerValores(aux, A, f) {
     var x = [];
     var y = [];
     a = -10;
-    for (let i = 0; i <= 200; i++) {
-        c = A * Math.cos(2*Math.PI*f*a)
+    for (let i = 0; i <= 500; i++) {
+        if(aux==1){
+            c = A * Math.sin(2*Math.PI*f*a)
+        }else if (aux==2){
+            c = A * Math.cos(2*Math.PI*f*a)
+        }
         x.push(a)
         y.push(c)
         a += 0.1;
@@ -40,12 +44,12 @@ function graficaModuladoraFM(vm, fm) {
             }
         }
     };
-    Plotly.newPlot('myDiv', data, layout);
+    Plotly.newPlot('ModuladoraFM', data, layout);
 }
 
 
 function graficaModuladoraPM(vm, fm) {
-    var save = traerValores(1, vm, fm);
+    var save = traerValores(2, vm, fm);
 
     var datos = {
         x: save[0].x,
@@ -71,7 +75,7 @@ function graficaModuladoraPM(vm, fm) {
             }
         }
     };
-    Plotly.newPlot('myDiv', data, layout);
+    Plotly.newPlot('ModuladorafM', data, layout);
 }
 
 
