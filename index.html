@@ -7,7 +7,8 @@
   <link rel="shortcut icon" href="static/img/logo.jpg" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Frameworks css -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <!-- Hojas de Estilo CSS -->
@@ -18,18 +19,19 @@
 
 <body>
 
-    <div id="myDiv">
+  <div id="myDiv">
 
-    </div>
+  </div>
   <h1 class="title">Modulación Angular en FM y PM</h1>
+  <!-- Seccion donde se piden los datos correspondientes -->
   <section class="inputs">
     <div class="row">
       <div class="col-6 line">
-        <div class="box-1">          
+        <div class="box-1">
           <h2>Señal Portadora</h2>
           <div class="row">
             <h3>Amplitud [V]:</h3>
-   
+
             <div class="col">
               <div class="form-floating">
                 <input type="number" class="form-control" id="Vc" placeholder="Amplitud max - Vc">
@@ -39,7 +41,7 @@
           </div>
           <div class="row">
             <h3>Frecuencia [Hz]:</h3>
-           
+
             <div class="col">
               <div class="form-floating">
                 <input type="number" class="form-control" id="fc" placeholder="Frecuencia - fc">
@@ -47,74 +49,97 @@
               </div>
             </div>
           </div>
-          </div>
+        </div>
       </div>
       <div class="col-6">
-          <div class="box-1">
-            <h2>Señal Moduladora</h2>
-            <div class="row ">
-              <h3>Amplitud [V]:</h3>
-    
-              <div class="col">
-                <div class="form-floating">
-                  <input type="number" class="form-control" id="Vm" placeholder="Amplitud maxima moduladora - Vm">
-                  <label for="floatingInputGrid">Amplitud maxima moduladora - Vm</label>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <h3>Frecuencia [Hz]:</h3>
-        
-              <div class="col">
-                <div class="form-floating">
-                  <input type="number" class="form-control" id="fm" placeholder="Frecuencia moduladora - fm">
-                  <label for="floatingInputGrid">Frecuencia moduladora - fm</label>
-                </div>
+        <div class="box-1">
+          <h2>Señal Moduladora</h2>
+          <div class="row ">
+            <h3>Amplitud [V]:</h3>
+
+            <div class="col">
+              <div class="form-floating">
+                <input type="number" class="form-control" id="Vm" placeholder="Amplitud maxima moduladora - Vm">
+                <label for="floatingInputGrid">Amplitud maxima moduladora - Vm</label>
               </div>
             </div>
           </div>
+          <div class="row">
+            <h3>Frecuencia [Hz]:</h3>
+
+            <div class="col">
+              <div class="form-floating">
+                <input type="number" class="form-control" id="fm" placeholder="Frecuencia moduladora - fm">
+                <label for="floatingInputGrid">Frecuencia moduladora - fm</label>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
-      <button type="button" class="btn btn-primary" id="btn-calcular" >Calcular</button>
+      <button type="button" class="btn btn-primary" id="btn-calcular">Calcular</button>
     </div>
   </section>
 
-  <div class="container">
+  <!-- Seccion donde se insertan los diferentes calculos -->
+  <div class="container" id="calculosSection" style="display:none">
     <div class="row">
       <div class="col-sm">
-        <div class="box-1">
-          HOLA
+        <div class="box-1 hod">
+          <h2> <b>Sensibilidad desviaciónFM</b>  </h2>
+          <h5 id="sensibilidadDesFM" style="text-align: center;"></h5>
         </div>
       </div>
       <div class="col-sm">
-        <div class="box-1">
-          HOLA
+        <div class="box-1 hod">
+          <h2> <b>Desviación en FM</b>  </h2>
+          <h5 id="DesviacionFM" style="text-align: center;"></h5>
         </div>
       </div>
       <div class="col-sm">
-        <div class="box-1">
-          HOLA
+        <div class="box-1 hod">
+          <h2> <b>Índice modulaciónFM</b> </h2>
+          <h5 id="indiceModFm" style="text-align: center;"></h5>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="ModuladoraFM" >
+  <br><br><br>
+
+  <!-- Seccion donde se insertn las graficas -->
+<!-- <div id="GraficasSection" style="display:none">
+  <div id="ModuladoraFM">
+  </div>
+  <div id="ModuladorafM">
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div id="ModuladoraFM">
+      </div>
+    </div>
+    <div class="col">
+      <div id="ModuladorafM">
+      </div>
+    </div>
+  </div>
+
 </div>
-<div id="ModuladorafM" >
-</div>
 
 
-
-<footer>
-  Luis Felipe Velasquez - Andrés Camilo López
-</footer>
+  <footer>
+    Luis Felipe Velasquez - Andrés Camilo López
+  </footer>
 </body>
 <!-- Scripts -->
 <script src="static/js/main.js" type="text/javascript "></Script>
 <script src="static/js/bessel.js"></script>
 <script src="static/js/funciones.js"></script>
+<script src="static/js/calculos.js"></script>
 <script src="static/js/graficas.js" type="text/javascript "></Script>
 
 </html>

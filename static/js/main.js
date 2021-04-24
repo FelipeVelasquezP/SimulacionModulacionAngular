@@ -9,7 +9,10 @@ $("#btn-calcular").click(function() {
   if (Vc && fc && Vm && fm) {
     graficaModuladoraFM(Vm, fm);
     graficaModuladoraPM(Vm,fm);
+    mostrarCalculos(Vc,fc,Vm,fm);
     $(".inputs").hide();
+    $("#calculosSection").show();
+    $("#GraficasSection").show();
   } else {
     Swal.fire({
         icon: 'error',
@@ -18,3 +21,11 @@ $("#btn-calcular").click(function() {
       })
   }
 });
+
+
+function mostrarCalculos(Vc,fc,Vm,fm) {
+  $("#sensibilidadDesFM").append("Por definir");
+  $("#DesviacionFM").append("Δ<i>f</i>= "+getDesviacionFM(Vm)+" Hz");
+  $("#indiceModFm").append("m= "+getIndiceModulacionFM(fm,Vm));
+
+}

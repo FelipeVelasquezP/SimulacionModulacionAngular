@@ -2,8 +2,8 @@
 function traerValores(aux, A, f) {
     var x = [];
     var y = [];
-    a = -10;
-    for (let i = 0; i <= 500; i++) {
+    a = -5;
+    for (let i = 0; i <= 7000; i++) {
         if(aux==1){
             c = A * Math.sin(2*Math.PI*f*a)
         }else if (aux==2){
@@ -11,7 +11,7 @@ function traerValores(aux, A, f) {
         }
         x.push(a)
         y.push(c)
-        a += 0.1;
+        a += 0.001;
     }
     valores = [{ x }, { y }]
     return valores;
@@ -139,4 +139,13 @@ function graficaPortadoraPM(vm, fm) {
         }
     };
     Plotly.newPlot('myDiv', data, layout);
+}
+
+
+function graficaModuladaFm(Vc,fc,Kuno,Vm,fm) {
+    
+}
+
+function graficaModuladaPM(Vc,fc,K,Vm,fm) {
+    
 }
