@@ -9,6 +9,7 @@ $("#btn-calcular").click(function() {
   if (Vc && fc && Vm && fm) {
     graficaModuladoraFM(Vm, fm);
     graficaModuladoraPM(Vm,fm);
+    $(".inputs").hide();
   } else {
     Swal.fire({
         icon: 'error',
