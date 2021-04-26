@@ -42,6 +42,18 @@ h3{
 .box-1{
     border-radius: 10px;
     padding: 5% 3%;
+}
+
+
+
+.hod:hover {
+    transform: scale(1.1);
+    transition: .2s;
+        z-index: 1000;
+  }
+
+.box-1{
+    border-radius: 18px;
     /* background: #e0e0e0; */
     box-shadow:  -5px 5px 20px #d1d1d1,
                  5px -5px 20px #e9e9e9;
