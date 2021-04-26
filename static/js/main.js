@@ -9,6 +9,8 @@ $("#btn-calcular").click(function() {
   if (Vc && fc && Vm && fm) {
     graficaModuladoraFM(Vm, fm);
     graficaModuladoraPM(Vm,fm);
+    graficaPortadoraFM(Vc,fc);
+    graficaPortadoraPM(Vc,fc);
     mostrarCalculos(Vc,fc,Vm,fm);
     $(".inputs").hide();
     $("#calculosSection").show();
