@@ -18,20 +18,16 @@
 </head>
 
 <body>
-
-  <div id="myDiv">
-
-  </div>
   <h1 class="title">Modulación Angular en FM y PM</h1>
   <!-- Seccion donde se piden los datos correspondientes -->
   <section class="inputs">
+  
     <div class="row">
       <div class="col-6 line">
         <div class="box-1">
           <h2>Señal Portadora</h2>
           <div class="row">
             <h3>Amplitud [V]:</h3>
-
             <div class="col">
               <div class="form-floating">
                 <input type="number" class="form-control" id="Vc" placeholder="Amplitud max - Vc">
@@ -77,13 +73,50 @@
         </div>
       </div>
     </div>
+<br>
+    <div>
+      <div class="row">
+        <div class="col">
+          <div class="box-1">
+            <h3>Indice de Modulación[m]:</h3>
+            <div class="row">
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="number" class="form-control" id="inputMPM" placeholder="Amplitud max - Vc">
+                <label for="floatingInputGrid">Indice de Modulación[PM]-m</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="number" class="form-control" id="inputMFM" placeholder="Amplitud max - Vc">
+                <label for="floatingInputGrid">Indice de Modulación[FM]-m</label>
+              </div>
+            </div>
+          </div>
+
+          </div>
+        </div>
+        <div class="col">
+          <div class="box-1">
+            <h3>Resistencia[Ω]:</h3>
+            <div class="col">
+              <div class="form-floating">
+                <input type="number" class="form-control" id="inputres" placeholder="Amplitud max - Vc">
+                <label for="floatingInputGrid">Resistencia[Ω]</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
     <div class="row">
       <button type="button" class="btn btn-primary" id="btn-calcular">Calcular</button>
     </div>
   </section>
 
   <!-- Seccion donde se insertan los diferentes calculos -->
-  <div class="container" id="calculosSection" style="display:none">
+  <div class="container" id="calculosSection" style="display: none;">
     <div class="row">
       <div class="col-sm">
         <div class="box-1 hod">
@@ -93,17 +126,86 @@
       </div>
       <div class="col-sm">
         <div class="box-1 hod">
-          <h2> <b>Desviación en FM</b>  </h2>
-          <h5 id="DesviacionFM" style="text-align: center;"></h5>
+          <h2> <b>Sensibilidad desviaciónPM</b>  </h2>
+          <h5 id="sensibilidadDesPM" style="text-align: center;"></h5>
         </div>
       </div>
       <div class="col-sm">
         <div class="box-1 hod">
-          <h2> <b>Índice modulaciónFM</b> </h2>
-          <h5 id="indiceModFm" style="text-align: center;"></h5>
+          <h2> <b>Desviación en FM</b>  </h2>
+          <h5 id="DesviacionFM" style="text-align: center;"></h5>
         </div>
       </div>
     </div>
+
+<br>
+    <div class="row">
+      <div class="col-sm">
+        <div class="box-1 hod">
+          <h2> <b>Desviación en PM</b>  </h2>
+          <h5 id="DesvicionPM" style="text-align: center;"></h5>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="box-1 hod">
+          <h2> <b>% de modulación Fm</b>  </h2>
+          <h5 id="porcFM" style="text-align: center;"></h5>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="box-1 hod">
+          <h2> <b>% de modulación PM</b>  </h2>
+          <h5 id="porcFM" style="text-align: center;"></h5>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-sm">
+        <div class="box-1 hod">
+          <h2> <b>Ancho Banda real FM</b>  </h2>
+          <h5 id="anchoFM" style="text-align: center;"></h5>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="box-1 hod">
+          <h2> <b>Ancho Banda real PM</b>  </h2>
+          <h5 id="anchoPM" style="text-align: center;"></h5>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="box-1 hod">
+          <h2> <b>Ancho Banda minimo FM</b>  </h2>
+          <h5 id="anchominFM" style="text-align: center;"></h5>
+        </div>
+      </div>
+    </div>
+
+
+    
+    <br>
+    <div class="row">
+      <div class="col-sm">
+        <div class="box-1 hod">
+          <h2> <b>Ancho Banda minimo PM</b>  </h2>
+          <h5 id="anchominPM" style="text-align: center;"></h5>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="box-1 hod">
+          <h2> <b>Relacion desvición Fm</b>  </h2>
+          <h5 id="relaFm" style="text-align: center;"></h5>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="box-1 hod">
+          <h2> <b>Potencia Promedio Portadora</b>  </h2>
+          <h5 id="porcFM" style="text-align: center;"></h5>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <br><br><br>
@@ -133,6 +235,9 @@
 
 </div>
 
+<div id="myDiv">
+
+</div>
 
   <footer>
     Luis Felipe Velasquez - Andrés Camilo López

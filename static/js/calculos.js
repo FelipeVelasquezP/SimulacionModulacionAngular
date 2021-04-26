@@ -1,9 +1,8 @@
 
-function getIndiceModulacion(Em,Ec) {
-var operacion=1;
-return operacion;    
+function getSensibilidadDesviacionFM(m,Vm,Fm) {
+    kUno=(m*Fm)/Vm;
+    return kUno;
 }
-
 
 function getDesviacionFM(Vm) {
     var des=4000*Vm;
@@ -20,7 +19,7 @@ function getIndiceModulacionFM(fm,Vm) {
     return ind;
 }
 
-function getPorcentajeIndice() {
-    var por=getPorcentajeIndice()*100;
+function getPorcentajeIndice(m) {
+    var por=m*100;
     return por;
 }

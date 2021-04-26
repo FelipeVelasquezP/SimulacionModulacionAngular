@@ -156,8 +156,7 @@ function graficaModuladaPM(Vc, fc, K, Vm, fm) {
 
 }
 
-c = [19,8,3,4,2,0.5];
-espectroFrecuecias(c);
+
 function espectroFrecuecias(fLaterales) {
     var datax = [];
     var datay = [];
