@@ -54,9 +54,9 @@ function getPotenciaComponentes (j,Vc,R) {
     var potenciaT = 0
     for (let index = 0; index < j.length; index++) {
         var potencia = (j[index]*Vc)/(2*R)
-        var txt = '<div class="col-4 br"> <div class="box-1 hod"> <h2> <b>Potencia componente J'+ index +'</b></h2><h5 id="porcFM" style="text-align: center;"> J' + index + ": " + potencia.toFixed(3) + ' W </h5></div></div>'
+        var txt = '<div class="col-4 br"> <div class="box-1 hod"> <h2> <b>Potencia componente J'+ index +'</b></h2><h5 id="porcFM" style="text-align: center;"> J' + index + " = " + potencia.toFixed(3) + ' W </h5></div></div>'
         $(".potencias").append(txt)       
         potenciaT += potencia
     }
-    $(".potencias").append('<div class="col-4 br"> <div class="box-1 hod"> <h2> <b>Potencia total: </b></h2><h5 id="porcFM" style="text-align: center;"> Potencia t: ' + potenciaT.toFixed(3) + ' W </h5></div></div>')
+    $(".potencias").append('<div class="col-4 br"> <div class="box-1 hod"> <h2> <b>Potencia total: </b></h2><h5 id="porcFM" style="text-align: center;"> Pt =  ' + potenciaT.toFixed(3) + ' W </h5></div></div>')
 }
