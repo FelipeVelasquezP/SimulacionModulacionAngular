@@ -50,13 +50,36 @@ function getPotenciaProm(Vc,R){
     return op.toFixed(3);
 }
 
-function getPotenciaComponentes (j,Vc,R) {
-    var potenciaT = 0
+function getParesPM(j){
     for (let index = 0; index < j.length; index++) {
-        var potencia = (j[index]*Vc)/(2*R)
-        var txt = '<div class="col-4 br"> <div class="box-1 hod"> <h2> <b>Potencia componente J'+ index +'</b></h2><h5 id="porcFM" style="text-align: center;"> J' + index + " = " + potencia.toFixed(3) + ' W </h5></div></div>'
-        $(".potencias").append(txt)       
+        var txt = '<div class="col-4 br"> <div class="box-1 hod"> <h2> <b>Componente J'+ index +'</b></h2><h5 id="porcFM" style="text-align: center;"> J' + index + " = " + j[index].toFixed(3) + ' V </h5></div></div>'
+        $(".paresPM").append(txt)       
+    }
+}
+function getPotenciaComponentesPM(p,Vc,R) {
+    var potenciaT = 0
+    for (let index = 0; index < p.length; index++) {
+        var potencia = (p[index]*Vc)/(2*R)
+        var txt = '<div class="col-4 br"> <div class="box-1 hod"> <h2> <b>Potencia componente J'+ index +'</b></h2><h5 id="porcFM" style="text-align: center;"> P' + index + " = " + potencia.toFixed(3) + ' W </h5></div></div>'
+        $(".potenciasPM").append(txt)       
         potenciaT += potencia
     }
-    $(".potencias").append('<div class="col-4 br"> <div class="box-1 hod"> <h2> <b>Potencia total: </b></h2><h5 id="porcFM" style="text-align: center;"> Pt =  ' + potenciaT.toFixed(3) + ' W </h5></div></div>')
+    $(".potenciasPM").append('<div class="col-4 br"> <div class="box-1 hod"> <h2> <b>Potencia total: </b></h2><h5 id="porcFM" style="text-align: center;"> Pt =  ' + potenciaT.toFixed(3) + ' W </h5></div></div>')
+}
+
+function getParesFM(j){
+    for (let index = 0; index < j.length; index++) {
+        var txt = '<div class="col-4 br"> <div class="box-1 hod"> <h2> <b>Componente J'+ index +'</b></h2><h5 id="porcFM" style="text-align: center;"> J' + index + " = " + j[index].toFixed(3) + ' V </h5></div></div>'
+        $(".paresFM").append(txt)       
+    }
+}
+function getPotenciaComponentesFM(p,Vm,R) {
+    var potenciaT = 0
+    for (let index = 0; index < p.length; index++) {
+        var potencia = (p[index]*Vm)/(2*R)
+        var txt = '<div class="col-4 br"> <div class="box-1 hod"> <h2> <b>Potencia componente J'+ index +'</b></h2><h5 id="porcFM" style="text-align: center;"> P' + index + " = " + potencia.toFixed(3) + ' W </h5></div></div>'
+        $(".potenciasFM").append(txt)       
+        potenciaT += potencia
+    }
+    $(".potenciasFM").append('<div class="col-4 br"> <div class="box-1 hod"> <h2> <b>Potencia total: </b></h2><h5 id="porcFM" style="text-align: center;"> Pt =  ' + potenciaT.toFixed(3) + ' W </h5></div></div>')
 }

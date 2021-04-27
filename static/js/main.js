@@ -45,7 +45,10 @@ function mostrarCalculos(Vc,fc,Vm,fm,mFm,mPm,R) {
   $("#anchominPM").text("Bmin = "+ getAnchominimo(getDesviacionFM(Vm,mFm,fm),fm)+" Hz");
   $("#relaFm").text("DR = " + getDesviacionFM(getDesviacionFM(Vm,mFm,fm),fm));
   $("#potcFM").text("Pc = " + getPotenciaProm(Vc, R) + " W");
-  getPotenciaComponentes(getBessel(mPm, Vc),Vc,R);
+  getParesPM(getBessel2(mPm));
+  getPotenciaComponentesPM(getBessel(mPm, Vc),Vc,R);
+  getParesFM(getBessel2(mFm));
+  getPotenciaComponentesFM(getBessel(mFm, Vm),Vm,R);
 }
 
 
