@@ -17,6 +17,7 @@ $("#btn-calcular").click(function() {
     graficaModuladaFm(Vm,mFM,fm,Vc,fc);
     graficaModuladaPm(Vm,mPM,fm,Vc,fc);
     espectroFrecueciasFm(mFM,Vc,fc);
+    espectroFrecueciasPm(mPM,Vc,fc);
     mostrarmisDatos(Vc,fc,Vm,fm,mFM,mPM,res);
     mostrarCalculos(Vc,fc,Vm,fm,mFM,mPM,res);
     $(".inputs").hide();

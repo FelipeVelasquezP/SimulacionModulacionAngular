@@ -302,3 +302,75 @@ function espectroFrecueciasFm(m,vc,fc) {
       Plotly.newPlot('espectroFm', data, layout, config );
 
 }
+
+
+
+
+
+function espectroFrecueciasPm(m,vc,fc) {
+    console.log(m,vc)
+    var fLaterales=getBessel(m,vc);
+    var datax = [];
+    var datay = [];
+    var auxCol=[];
+    var coloresFm=[];
+
+    for (let i = fLaterales.length - 1; i > 0; i--) {
+        datay.push(fLaterales[i])
+        datax.push('f '+i)
+    }
+    for (let i = 0; i < fLaterales.length; i++) {
+        datax.push('f' + i);
+
+    }
+    datay = datay.concat(fLaterales)
+
+    for(i=0;i<datay.length/2;i++){
+        coloresFm.push(getRandomColor());
+    }
+    for (let i = coloresFm.length ; i >= 0; i--) {
+        auxCol.push(coloresFm[i])
+    }
+    coloresFm=coloresFm.concat(auxCol);
+
+    for (let i = 0; i < coloresFm.length; i++) {
+        if (coloresFm[i+1]==coloresFm[i] || coloresFm[i]==undefined || coloresFm[i-1]==coloresFm[i]) {
+            coloresFm.splice(i,1);
+        }
+    }
+
+    for (let i = 0; i < coloresFm.length; i++) {
+        if (coloresFm[i+1]==coloresFm[i] || coloresFm[i]==undefined || coloresFm[i-1]==coloresFm[i]) {
+            coloresFm.splice(i,1);
+            
+        }
+    }
+
+    console.log(datay,datax)
+
+    var trace1 = {
+        type: 'bar',
+        x: datax,
+        y: datay,
+        marker: {
+            color: coloresFm,
+            line: {
+                width: 2
+            }
+        }
+      };
+
+      
+
+      var data = [ trace1];
+
+      var layout = { 
+        title: 'Espectro de frecuencias de las bandas laterales en Pm',
+        font: {size: 18}
+      };
+
+      var config = {responsive: true}
+
+      Plotly.newPlot('divEspectro', data, layout, config );
+
+}
