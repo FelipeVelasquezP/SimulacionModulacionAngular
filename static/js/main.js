@@ -17,6 +17,7 @@ $("#btn-calcular").click(function() {
     graficaModuladaFm(Vm,mFM,fm,Vc,fc);
     graficaModuladaPm(Vm,mPM,fm,Vc,fc);
     espectroFrecueciasFm(mFM,Vc,fc);
+    mostrarmisDatos(Vc,fc,Vm,fm,mFM,mPM,res);
     mostrarCalculos(Vc,fc,Vm,fm,mFM,mPM,res);
     $(".inputs").hide();
     $("#calculosSection").show();
@@ -34,7 +35,7 @@ $("#btn-calcular").click(function() {
 function mostrarCalculos(Vc,fc,Vm,fm,mFm,mPm,R) {
   $("#sensibilidadDesFM").append("K1="+getSensibilidadDesviacionFM(mFm,Vm,fm).toFixed(3)+" Hz/v");
   $("#sensibilidadDesPM").append("K="+getSensibilidadDesviacionPM(mPm,Vm).toFixed(3)+" rad/v");
-  $("#DesviacionFM").append("Δ<i>f</i>= "+getDesviacionFM(Vm,mFm,fm).toFixed(3)+" Hz");
+  $("#DesviacionFM").append("Δ<i>f</i>= "+getDesviacionFM(Vm,mFm,fm)+" Hz");
   $("#DesvicionPM").append("Δ<i>θ</i>= "+mPm+" rad");
   $("#porcFM").append("%mod= "+getPorcentajeModulacionFm(Vm,mFm,fm).toFixed(3)+"%");
   $("#porcPM").append("%mod= "+getPorcentajeModulacionPm(mPm,fm).toFixed(3)+"%");
@@ -45,4 +46,20 @@ function mostrarCalculos(Vc,fc,Vm,fm,mFm,mPm,R) {
   $("#relaFm").text("Dr = " + getDesviacionFM(getDesviacionFM(Vm,mFm,fm),fm));
   $("#potcFM").text("Pc = " + getPotenciaProm(Vc, R) + " W");
   getPotenciaComponentes(getBessel(mPm, Vc),Vc,R);
+}
+
+
+function mostrarmisDatos(Vc,fc,Vm,fm,mFm,mPm,R) {
+  console.log(Vc,fc,Vm,fm,mFm,mPm,R)
+  $("#vc").append(Vc+" V");
+  $("#vm").append(Vm+" V");
+  $("#campofc").append(fc+" Hz");
+  $("#campofm").append(fm+" Hz");
+  $("#mfm").append(mFm);
+  $("#mpm").append(mPm+" rad");
+  $("#resistencia").append(R+" Ω");
+
+
+
+
 }

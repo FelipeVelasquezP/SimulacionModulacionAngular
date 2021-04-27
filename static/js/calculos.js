@@ -14,13 +14,9 @@ function getSensibilidadDesviacionPM(m,Vm) {
 }
 function getDesviacionFM(Vm,m,fm) {
     var des=getSensibilidadDesviacionFM(m,Vm,fm)*Vm;
-    return des;
+    return des.toFixed(3);
 }
 
-function getDesviacionFM(Vm,m,fm) {
-    var des=getSensibilidadDesviacionFM(m,Vm,fm)*Vm;
-    return des;
-}
 
 
 function getPorcentajeModulacionFm(Vm,m,fm) {
@@ -39,7 +35,8 @@ function getIndiceModulacion(Em,Ec) {
 }
 
 function getAnchominimo(f, fm) {
-    var op = 2*(f+fm);
+    console.log(f,fm)
+    var op = 2*(parseInt(f)+fm);
     return op.toFixed(3)
 }
 
