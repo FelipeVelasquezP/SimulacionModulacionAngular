@@ -21,6 +21,7 @@ $("#btn-calcular").click(function() {
     mostrarCalculos(Vc,fc,Vm,fm,mFM,mPM,res);
     $(".inputs").hide();
     $("#rta").show();
+    $("#btn-new").show()
     $("#GraficasSection").show();
   } else {
     Swal.fire({
@@ -61,8 +62,9 @@ function mostrarmisDatos(Vc,fc,Vm,fm,mFm,mPm,R) {
   $("#mfm").append("m [FM] = " + mFm);
   $("#mpm").append("m [PM] = " + mPm );
   $("#resistencia").append("R = " + R +" Ω");
-
-
-
-
 }
+
+//Actauliza la página
+$("#btn-new").click(function () {
+  location.reload()
+})

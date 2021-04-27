@@ -8,7 +8,7 @@
     /* border: 1px solid green; */
     background-color: white;
     border-radius: 10px;
-    margin: 5% auto;
+    margin: 2% auto 5%;
     padding: 2% 3%;
     width: 90%;
     /* border-radius: 50px;
@@ -35,7 +35,7 @@ h3{
     font-size: 16px;
     margin: 2% 0 !important;
 }
-#btn-calcular{
+#btn-calcular, #btn-new{
     margin: 5% auto 2%;
     width: 30%;
 }
@@ -61,7 +61,7 @@ h3{
 
 .cont{
     float: left;
-    padding: 0% 2%;
+    padding: 0% 1%;
     text-align: center;
 }
 .center{
