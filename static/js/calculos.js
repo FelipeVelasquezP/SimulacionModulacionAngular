@@ -4,22 +4,24 @@ function getSensibilidadDesviacionFM(m,Vm,Fm) {
     return kUno;
 }
 
-function getDesviacionFM(Vm) {
-    var des=4000*Vm;
-    return Vm;
+function getSensibilidadDesviacionPM(m,Vm) {
+    k=m/Vm;
+    return k;
 }
 
-function getDatosPM(Vm) {
-    var des=4000*Vm;
-    return Vm;
+function getDesviacionFM(Vm,m,fm) {
+    var des=getSensibilidadDesviacionFM(m,Vm,fm)*Vm;
+    return des;
 }
 
-function getIndiceModulacionFM(fm,Vm) {
-    var ind=fm*getDesviacionFM(Vm);
-    return ind;
-}
 
-function getPorcentajeIndice(m) {
-    var por=m*100;
+function getPorcentajeModulacionFm(Vm,m,fm) {
+    fmax=getDesviacionFM(Vm,m,fm);
+    var por=(fm/fmax)*100;
     return por;
+}
+
+function getPorcentajeModulacionPm(mPm,fm) {
+    var porP=(fm/mPm)*100;
+    return porP;
 }
