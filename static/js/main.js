@@ -1,11 +1,10 @@
 $("#btn-calcular").click(function() {
+  window.location.href='#AA';
   //Caputra de datos
   var Vc=parseFloat($("#Vc").val());
   var fc=parseFloat($("#fc").val());
   var Vm=parseFloat($("#Vm").val());
   var fm=parseFloat($("#fm").val());
-  //Validación
-  if (Vc && fc && Vm && fm) {
   var mFM=parseFloat($("#inputMFM").val());
   var mPM=parseFloat($("#inputMPM").val());
   var res=parseFloat($("#inputres").val());
@@ -16,7 +15,8 @@ $("#btn-calcular").click(function() {
     graficaPortadoraPM(Vc,fc);
     graficaModuladaFm(Vm,mFM,fm,Vc,fc);
     graficaModuladaPm(Vm,mPM,fm,Vc,fc);
-    espectroFrecueciasFm(mFM,Vc,fc);
+    espectroFrecueciasFm(mFM,Vc,fm,fc);
+    espectroFrecueciasPm(mPM,Vc,fm,fc);
     mostrarmisDatos(Vc,fc,Vm,fm,mFM,mPM,res);
     mostrarCalculos(Vc,fc,Vm,fm,mFM,mPM,res);
     $(".inputs").hide();
@@ -24,12 +24,14 @@ $("#btn-calcular").click(function() {
     $("#btn-new").show()
     $("#GraficasSection").show();
   } else {
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Por favor ingresa todos los datos'
-      })
-  }
+    console.log("sss")
+    swal({
+      title: "Opps!",
+      text: "Por favor inserta todos los datos",
+      icon: "error",
+      button: "Ok",
+    });
+  
 }
 });
 
