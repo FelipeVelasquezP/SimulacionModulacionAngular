@@ -43,9 +43,9 @@ h3{
     border-radius: 10px;
     padding: 5% 3%;
 }
-
-
-
+.br{
+    margin-bottom: 3%;
+}
 .hod:hover {
     transform: scale(1.1);
     transition: .2s;

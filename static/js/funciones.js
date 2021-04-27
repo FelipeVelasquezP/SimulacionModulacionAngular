@@ -14,13 +14,13 @@ function calcular() {
 /*exported BESSEL */
 
 //BESSEL.besselj(m, n)
-function getBessel(m) {
+function getBessel(m,vc) {
     var J = [];
     for (let i = 0; i < 14; i++) {
         var r = BESSEL.besselj(m, i)
         if (r > 0.01 || r < -0.01) {
-            J.push(r);
+            J.push(Math.abs(r*vc));
         }
     }
-    espectroFrecuecias(J)
+    return J;
 }
