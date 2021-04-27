@@ -24,3 +24,15 @@ function getBessel(m,vc) {
     }
     return J;
 }
+
+function getBessel2(m) {
+    var J = [];
+    for (let i = 0; i < 14; i++) {
+        var r = BESSEL.besselj(m, i)
+        if (r > 0.01 || r < -0.01) {
+            J.push(r);
+        }
+    }
+    return J;
+}
+

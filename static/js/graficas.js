@@ -1,5 +1,5 @@
 
-function traerValores(aux, A, f, df , faux) {
+function traerValores(aux, A, f, df, faux) {
     var x = [];
     var y = [];
     a = -3;
@@ -53,7 +53,7 @@ function graficaModuladoraFM(vm, fm) {
 
 
 function graficaModuladoraPM(vm, fm) {
-    var save = traerValores(2, vm, fm, null,null);
+    var save = traerValores(2, vm, fm, null, null);
 
     var datos = {
         x: save[0].x,
@@ -85,7 +85,7 @@ function graficaModuladoraPM(vm, fm) {
 
 
 function graficaPortadoraFM(vc, fc) {
-    var save = traerValores(2, vc, fc, null,null);
+    var save = traerValores(2, vc, fc, null, null);
 
     var datos = {
         x: save[0].x,
@@ -116,7 +116,7 @@ function graficaPortadoraFM(vc, fc) {
 
 
 function graficaPortadoraPM(vc, fc) {
-    var save = traerValores(2, vc, fc, null,null);
+    var save = traerValores(2, vc, fc, null, null);
 
     var datos = {
         x: save[0].x,
@@ -146,9 +146,9 @@ function graficaPortadoraPM(vc, fc) {
 }
 
 
-function graficaModuladaFm(Vm,m,fm,Vc,fc) {
-    var ond=getDesviacionFM(Vm,m,fm)/fm;
-    var save = traerValores(3, Vc, fc, ond,fm);
+function graficaModuladaFm(Vm, m, fm, Vc, fc) {
+    var ond = getDesviacionFM(Vm, m, fm) / fm;
+    var save = traerValores(3, Vc, fc, ond, fm);
 
     var datos = {
         x: save[0].x,
@@ -177,8 +177,8 @@ function graficaModuladaFm(Vm,m,fm,Vc,fc) {
     Plotly.newPlot('ModuladaFM', data, layout);
 }
 
-function graficaModuladaPm(Vm,m,fm,Vc,fc) {
-    var save = traerValores(4, Vc, fc, m,fm);
+function graficaModuladaPm(Vm, m, fm, Vc, fc) {
+    var save = traerValores(4, Vc, fc, m, fm);
     var datos = {
         x: save[0].x,
         y: save[1].y,
@@ -210,23 +210,23 @@ function graficaModuladaPm(Vm,m,fm,Vc,fc) {
 
 
 function getRandomColor() {
-    var colores=[];
-    var num=(Math.floor(Math.random()*4)*4).toString(16);
-    var letters = ['0','F',num];
+    var colores = [];
+    var num = (Math.floor(Math.random() * 4) * 4).toString(16);
+    var letters = ['0', 'F', num];
     var color = '#';
-    
-    for (var i = 0; i < 3; i++ ) {
-        let pos=Math.floor(Math.random() * letters.length);
+
+    for (var i = 0; i < 3; i++) {
+        let pos = Math.floor(Math.random() * letters.length);
         color += letters[pos];
-        letters.splice(pos,1);
-        
+        letters.splice(pos, 1);
+
     }
-    
+
     //para evitar que se repitan colores 
-    if(colores.includes(color))
-      return getRandomColor();
+    if (colores.includes(color))
+        return getRandomColor();
     else
-      colores.push(color)
+        colores.push(color)
 
     return color;
 }
@@ -235,46 +235,64 @@ function getRandomColor() {
 
 
 
-function espectroFrecueciasFm(m,vc,fc) {
-    console.log(m,vc)
-    var fLaterales=getBessel(m,vc);
+function espectroFrecueciasFm(m, vc, fm, fc) {
+    console.log(m, vc)
+    var fLaterales = getBessel(m, vc);
     var datax = [];
     var datay = [];
-    var auxCol=[];
-    var coloresFm=[];
+    var auxdatax=[]
+    var auxCol = [];
+    var coloresFm = [];
 
     for (let i = fLaterales.length - 1; i > 0; i--) {
         datay.push(fLaterales[i])
-        datax.push('f '+i)
+        datax.push('f ' + i)
     }
     for (let i = 0; i < fLaterales.length; i++) {
         datax.push('f' + i);
 
     }
+    for (let i = 0; i < datax.length; i++) {
+        var indice = datax[i].charAt(datax[i].length - 1);
+        auxdatax[i] = indice;
+
+    }
+
+    for (let i = 0; i < datax.length; i++) {
+        var op;
+        var ind=auxdatax[i];
+        if (datax[i] == "f0") {
+            op = fc;
+        } else if(datax[i] == "f " + ind) {
+            op = fc-fm*auxdatax[i];
+        }else if(datax[i] == "f" + ind){
+            op = fc+fm*auxdatax[i];
+        }
+        datax[i]=op;
+    }
     datay = datay.concat(fLaterales)
 
-    for(i=0;i<datay.length/2;i++){
+    for (i = 0; i < datay.length / 2; i++) {
         coloresFm.push(getRandomColor());
     }
-    for (let i = coloresFm.length ; i >= 0; i--) {
+    for (let i = coloresFm.length; i >= 0; i--) {
         auxCol.push(coloresFm[i])
     }
-    coloresFm=coloresFm.concat(auxCol);
+    coloresFm = coloresFm.concat(auxCol);
 
     for (let i = 0; i < coloresFm.length; i++) {
-        if (coloresFm[i+1]==coloresFm[i] || coloresFm[i]==undefined || coloresFm[i-1]==coloresFm[i]) {
-            coloresFm.splice(i,1);
+        if (coloresFm[i + 1] == coloresFm[i] || coloresFm[i] == undefined || coloresFm[i - 1] == coloresFm[i]) {
+            coloresFm.splice(i, 1);
         }
     }
 
     for (let i = 0; i < coloresFm.length; i++) {
-        if (coloresFm[i+1]==coloresFm[i] || coloresFm[i]==undefined || coloresFm[i-1]==coloresFm[i]) {
-            coloresFm.splice(i,1);
-            
+        if (coloresFm[i + 1] == coloresFm[i] || coloresFm[i] == undefined || coloresFm[i - 1] == coloresFm[i]) {
+            coloresFm.splice(i, 1);
+
         }
     }
 
-    console.log(datay,datax)
 
     var trace1 = {
         type: 'bar',
@@ -286,20 +304,35 @@ function espectroFrecueciasFm(m,vc,fc) {
                 width: 2
             }
         }
-      };
+    };
 
-      
 
-      var data = [ trace1];
 
-      var layout = { 
+    var data = [trace1];
+
+    var layout = {
         title: 'Espectro de frecuencias de las bandas laterales en FM',
-        font: {size: 18}
-      };
+        font: { size: 18 },
+        xaxis: {
+            title: 'Frecuencia [Hz]',
+            titlefont: {
+                color: 'black',
+                size: 12
+            },
+            rangemode: 'tozero'
+        },
+        yaxis: {
+            title: 'Potencia [W]',
+            titlefont: {
+                color: 'black',
+                size: 12
+            }
+        }
+    };
 
-      var config = {responsive: true}
+    var config = { responsive: true }
 
-      Plotly.newPlot('espectroFm', data, layout, config );
+    Plotly.newPlot('espectroFm', data, layout, config);
 
 }
 
@@ -307,46 +340,63 @@ function espectroFrecueciasFm(m,vc,fc) {
 
 
 
-function espectroFrecueciasPm(m,vc,fc) {
-    console.log(m,vc)
-    var fLaterales=getBessel(m,vc);
+function espectroFrecueciasPm(m, vc, fm, fc) {
+    console.log(m, vc)
+    var fLaterales = getBessel(m, vc);
     var datax = [];
     var datay = [];
-    var auxCol=[];
-    var coloresFm=[];
+    var auxdatax = [];
+    var auxCol = [];
+    var coloresFm = [];
 
     for (let i = fLaterales.length - 1; i > 0; i--) {
         datay.push(fLaterales[i])
-        datax.push('f '+i)
+        datax.push('f ' + i)
     }
     for (let i = 0; i < fLaterales.length; i++) {
         datax.push('f' + i);
+    }
+    for (let i = 0; i < datax.length; i++) {
+        var indice = datax[i].charAt(datax[i].length - 1);
+        auxdatax[i] = indice;
 
     }
+    for (let i = 0; i < datax.length; i++) {
+        var op;
+        var ind=auxdatax[i];
+        if (datax[i] == "f0") {
+            op = fc;
+        } else if(datax[i] == "f " + ind) {
+            op = fc-fm*auxdatax[i];
+        }else if(datax[i] == "f" + ind){
+            op = fc+fm*auxdatax[i];
+        }
+        datax[i]=op;
+    }
+
     datay = datay.concat(fLaterales)
 
-    for(i=0;i<datay.length/2;i++){
+    for (i = 0; i < datay.length / 2; i++) {
         coloresFm.push(getRandomColor());
     }
-    for (let i = coloresFm.length ; i >= 0; i--) {
+    for (let i = coloresFm.length; i >= 0; i--) {
         auxCol.push(coloresFm[i])
     }
-    coloresFm=coloresFm.concat(auxCol);
+    coloresFm = coloresFm.concat(auxCol);
 
     for (let i = 0; i < coloresFm.length; i++) {
-        if (coloresFm[i+1]==coloresFm[i] || coloresFm[i]==undefined || coloresFm[i-1]==coloresFm[i]) {
-            coloresFm.splice(i,1);
+        if (coloresFm[i + 1] == coloresFm[i] || coloresFm[i] == undefined || coloresFm[i - 1] == coloresFm[i]) {
+            coloresFm.splice(i, 1);
         }
     }
 
     for (let i = 0; i < coloresFm.length; i++) {
-        if (coloresFm[i+1]==coloresFm[i] || coloresFm[i]==undefined || coloresFm[i-1]==coloresFm[i]) {
-            coloresFm.splice(i,1);
-            
+        if (coloresFm[i + 1] == coloresFm[i] || coloresFm[i] == undefined || coloresFm[i - 1] == coloresFm[i]) {
+            coloresFm.splice(i, 1);
+
         }
     }
 
-    console.log(datay,datax)
 
     var trace1 = {
         type: 'bar',
@@ -358,19 +408,34 @@ function espectroFrecueciasPm(m,vc,fc) {
                 width: 2
             }
         }
-      };
+    };
 
-      
 
-      var data = [ trace1];
 
-      var layout = { 
+    var data = [trace1];
+
+    var layout = {
         title: 'Espectro de frecuencias de las bandas laterales en Pm',
-        font: {size: 18}
-      };
+        font: { size: 18 },
+        xaxis: {
+            title: 'Frecuencia [Hz]',
+            titlefont: {
+                color: 'black',
+                size: 12
+            },
+            rangemode: 'tozero'
+        },
+        yaxis: {
+            title: 'Potencia [W]',
+            titlefont: {
+                color: 'black',
+                size: 12
+            }
+        }
+    };
 
-      var config = {responsive: true}
+    var config = { responsive: true }
 
-      Plotly.newPlot('divEspectro', data, layout, config );
+    Plotly.newPlot('divEspectro', data, layout, config);
 
 }

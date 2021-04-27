@@ -61,18 +61,22 @@ h3{
 
 .cont{
     float: left;
-    padding: 0% 2%;
+    padding: 0% 1%;
     text-align: center;
 }
-
+.center{
+    margin: 0 auto;
+    padding: 0  15%;
+    /* width: 90%; */
+}
 #calculosSection{
     border: solid 2px rgb(194, 194, 194);
     border-radius: 10px;
-    padding: 2% 2% 5%;
+    text-align: center;
     width: 90%;
 }
 .calculos{
-    margin: 5% 5%;
+    margin: 5% 5% 2%;
     text-align: left;
 }
 .resultados{
