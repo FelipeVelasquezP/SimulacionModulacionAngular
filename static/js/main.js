@@ -1,4 +1,5 @@
 $("#btn-calcular").click(function() {
+  window.location.href='#AA';
   //Caputra de datos
   var Vc=parseFloat($("#Vc").val());
   var fc=parseFloat($("#fc").val());
