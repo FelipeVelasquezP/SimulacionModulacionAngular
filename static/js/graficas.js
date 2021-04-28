@@ -209,7 +209,7 @@ function graficaModuladaPm(Vm, m, fm, Vc, fc) {
 
 
 
-function getRandomColor() {
+function getRandomColor(coloresFm) {
     var colores = [];
     var num = (Math.floor(Math.random() * 4) * 4).toString(16);
     var letters = ['0', 'F', num];
@@ -223,12 +223,12 @@ function getRandomColor() {
     }
 
     //para evitar que se repitan colores 
-    if (colores.includes(color))
-        return getRandomColor();
-    else
-        colores.push(color)
+    if (coloresFm.includes(color)) {
+        return getRandomColor(coloresFm);
+    } else {
+        return color;
+    }
 
-    return color;
 }
 
 
@@ -240,7 +240,7 @@ function espectroFrecueciasFm(m, vc, fm, fc) {
     var fLaterales = getBessel(m, vc);
     var datax = [];
     var datay = [];
-    var auxdatax=[]
+    var auxdatax = []
     var auxCol = [];
     var coloresFm = [];
 
@@ -254,31 +254,38 @@ function espectroFrecueciasFm(m, vc, fm, fc) {
     }
     for (let i = 0; i < datax.length; i++) {
         var indice = datax[i].charAt(datax[i].length - 1);
-        auxdatax[i] = indice;
-
+        var indice2 = datax[i].charAt(datax[i].length - 2);
+        var sum = indice2 + indice;
+        if (sum > 9) {
+            auxdatax[i] = sum;
+        } else {
+            auxdatax[i] = indice;
+        }
     }
-
     for (let i = 0; i < datax.length; i++) {
         var op;
-        var ind=auxdatax[i];
+        var ind = auxdatax[i];
         if (datax[i] == "f0") {
             op = fc;
-        } else if(datax[i] == "f " + ind) {
-            op = fc-fm*auxdatax[i];
-        }else if(datax[i] == "f" + ind){
-            op = fc+fm*auxdatax[i];
+        } else if (datax[i] == "f " + ind) {
+            op = fc - fm * auxdatax[i];
+        } else if (datax[i] == "f" + ind) {
+            op = fc + fm * auxdatax[i];
         }
-        datax[i]=op;
+        datax[i] = op;
     }
     datay = datay.concat(fLaterales)
 
     for (i = 0; i < datay.length / 2; i++) {
-        coloresFm.push(getRandomColor());
+        coloresFm.push(getRandomColor(coloresFm));
     }
-    for (let i = coloresFm.length; i >= 0; i--) {
+    console.log(coloresFm)
+    for (let i = coloresFm.length - 1; i >= 0; i--) {
         auxCol.push(coloresFm[i])
     }
+    console.log(auxCol)
     coloresFm = coloresFm.concat(auxCol);
+    // console.log(datay,coloresFm)
 
     for (let i = 0; i < coloresFm.length; i++) {
         if (coloresFm[i + 1] == coloresFm[i] || coloresFm[i] == undefined || coloresFm[i - 1] == coloresFm[i]) {
@@ -358,28 +365,33 @@ function espectroFrecueciasPm(m, vc, fm, fc) {
     }
     for (let i = 0; i < datax.length; i++) {
         var indice = datax[i].charAt(datax[i].length - 1);
-        auxdatax[i] = indice;
-
+        var indice2 = datax[i].charAt(datax[i].length - 2);
+        var sum = indice2 + indice;
+        if (sum > 9) {
+            auxdatax[i] = sum;
+        } else {
+            auxdatax[i] = indice;
+        }
     }
     for (let i = 0; i < datax.length; i++) {
         var op;
-        var ind=auxdatax[i];
+        var ind = auxdatax[i];
         if (datax[i] == "f0") {
             op = fc;
-        } else if(datax[i] == "f " + ind) {
-            op = fc-fm*auxdatax[i];
-        }else if(datax[i] == "f" + ind){
-            op = fc+fm*auxdatax[i];
+        } else if (datax[i] == "f " + ind) {
+            op = fc - fm * auxdatax[i];
+        } else if (datax[i] == "f" + ind) {
+            op = fc + fm * auxdatax[i];
         }
-        datax[i]=op;
+        datax[i] = op;
     }
 
     datay = datay.concat(fLaterales)
 
     for (i = 0; i < datay.length / 2; i++) {
-        coloresFm.push(getRandomColor());
+        coloresFm.push(getRandomColor(coloresFm));
     }
-    for (let i = coloresFm.length; i >= 0; i--) {
+    for (let i = coloresFm.length-1; i >= 0; i--) {
         auxCol.push(coloresFm[i])
     }
     coloresFm = coloresFm.concat(auxCol);
